@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Berita extends Model
 {
@@ -11,6 +12,7 @@ class Berita extends Model
 
     protected $fillable = [
         'judul_berita',
+        'slug',
         'isi_berita',
         'gambar_berita',
         'kategori',
@@ -18,20 +20,37 @@ class Berita extends Model
         'admin_id',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'tanggal_berita' => 'date',
-        ];
-    }
-
     public function admin()
     {
         return $this->belongsTo(Admin::class);
     }
 
-    public function komentars()
+    protected static function booted()
     {
-        return $this->hasMany(Komentar::class);
+        static::creating(function ($berita) {
+            $slug = Str::slug($berita->judul_berita);
+            $originalSlug = $slug;
+            $count = 1;
+
+            while (Berita::where('slug', $slug)->exists()) {
+                $slug = $originalSlug . '-' . $count++;
+            }
+
+            $berita->slug = $slug;
+        });
+
+        static::updating(function ($berita) {
+            if ($berita->isDirty('judul_berita')) {
+                $slug = Str::slug($berita->judul_berita);
+                $originalSlug = $slug;
+                $count = 1;
+
+                while (Berita::where('slug', $slug)->where('id', '!=', $berita->id)->exists()) {
+                    $slug = $originalSlug . '-' . $count++;
+                }
+
+                $berita->slug = $slug;
+            }
+        });
     }
 }

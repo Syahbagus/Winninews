@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('foto_admin')->nullable();
+            $table->string('foto_guest')->nullable();
             $table->timestamps();
         });
     }
