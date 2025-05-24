@@ -18,6 +18,7 @@ class Berita extends Model
         'kategori',
         'tanggal_berita',
         'admin_id',
+        'trending',
     ];
 
     public function admin()

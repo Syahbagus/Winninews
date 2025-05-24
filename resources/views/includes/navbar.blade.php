@@ -19,8 +19,9 @@
 
         <!-- Menu Desktop -->
         <div class="hidden lg:flex items-center space-x-4">
-            <a href="#main" class="text-white px-4 hover:text-pink-400 transition">Beranda</a>
-            <a href="#kategori" class="text-white px-4 hover:text-pink-400 transition">Kategori</a>
+            <a href="{{ route('landing') }}" class="text-white px-4 hover:text-pink-400 transition">Beranda</a>
+            <a href="{{ route('landing') }}#kategori"
+                class="text-white px-4 hover:text-pink-400 transition">Kategori</a>
             <a href="https://winnicode.com/" target="_blank"
                 class="text-white px-4 hover:text-pink-400 transition">Tentang Kami</a>
             <button class="bg-pink-500 hover:bg-pink-600 px-4 py-2 rounded-md text-white transition">Log in</button>
@@ -35,8 +36,8 @@
 
 <!-- Dropdown Menu Mobile -->
 <div id="mobile-menu" class="hidden bg-black p-4 lg:hidden transition-all duration-300">
-    <a href="#main" class="block text-white py-2 hover:text-pink-400 transition">Beranda</a>
-    <a href="#kategori" class="block text-white py-2 hover:text-pink-400 transition">Kategori</a>
+    <a href="{{ route('landing') }}" class="block text-white py-2 hover:text-pink-400 transition">Beranda</a>
+    <a href="{{ route('landing') }}#kategori" class="block text-white py-2 hover:text-pink-400 transition">Kategori</a>
     <a href="https://winnicode.com/" target="_blank"
         class="block text-white py-2 hover:text-pink-400 transition">Tentang Kami</a>
     <button class="w-full bg-pink-500 hover:bg-pink-600 px-4 py-2 rounded-md text-white mt-2 transition">Log in</button>

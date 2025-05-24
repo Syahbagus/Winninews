@@ -14,6 +14,8 @@ use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Forms\FormsComponent;
 use Illuminate\Support\Str;
 
@@ -34,7 +36,6 @@ class BeritaResource extends Resource
                 ->afterStateUpdated(function (Set $set, $state) {
                     $set('slug', Str::slug($state));
                 }),
-
 
             Forms\Components\TextInput::make('slug')
                 ->label('Slug')
@@ -89,11 +90,12 @@ class BeritaResource extends Resource
     {
         return $table->columns([
             TextColumn::make('judul_berita')->label('Judul')->sortable()->searchable(),
-            TextColumn::make('slug')->label('Slug')->toggleable(), // Ini boleh dihapus kalau tidak ingin tampil
+            // TextColumn::make('slug')->label('Slug')->toggleable(),
             TextColumn::make('kategori')->label('Kategori'),
             ImageColumn::make('gambar_berita')->label('Gambar')->circular()->size(40),
             TextColumn::make('tanggal_berita')->label('Tanggal')->date(),
             TextColumn::make('admin.name')->label('Admin')->sortable(),
+            ToggleColumn::make('trending')->label('Trending')
         ])
             ->actions([
                 Tables\Actions\EditAction::make(),

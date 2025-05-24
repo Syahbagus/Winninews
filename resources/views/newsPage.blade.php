@@ -64,7 +64,6 @@
 
     <!-- Konten Utama -->
     <main id="mainNews" class="container mx-auto px-4 py-8 text-white">
-
         <!-- Gambar Utama -->
         <div class="mb-6 overflow-hidden h-96 w-full rounded-md shadow-lg">
             <img src="{{ asset('img/sample_endrick.jpeg') }}" alt="Endrick Real Madrid"
@@ -73,35 +72,36 @@
 
         <!-- Isi Berita dan Sidebar -->
         <div class="grid md:grid-cols-3 gap-8">
-            <div class="md:col-span-2 space-y-4 leading-relaxed text-zinc-300 text-justify">
+            <!-- Artikel Utama -->
+            <article class="md:col-span-2 space-y-4 leading-relaxed text-zinc-300 text-justify">
                 <!-- Judul -->
-                <h1 class="text-2xl md:text-4xl font-bold mb-10 leading-snug text-white text-justify">
-                    Endrick Nggak Jadi Algojo Penentu Adu Penalti Real Madrid karena...
-                </h1>
+                <header>
+                    <h1 class="text-2xl md:text-4xl font-bold mb-10 leading-snug text-white text-justify">
+                        Endrick Nggak Jadi Algojo Penentu Adu Penalti Real Madrid karena...
+                    </h1>
+                </header>
 
-                <!-- Isi Berita -->
-                <article>
-                    <p><em>Awalnya, Carlo Ancelotti mau memilih Endrick sebagai algojo penalti terakhir Real Madrid.
-                            Tapi setelah Ancelotti lihat rautnya sang striker... nggak jadi deh!</em></p>
+                <!-- Isi Artikel -->
+                <p><em>Awalnya, Carlo Ancelotti mau memilih Endrick sebagai algojo penalti terakhir Real Madrid.
+                        Tapi setelah Ancelotti lihat rautnya sang striker... nggak jadi deh!</em></p>
 
-                    <p>Real Madrid menang adu penalti kontra Atletico Madrid di leg kedua babak 16 besar Liga Champions,
-                        Rabu (13/3) dini hari WIB. El Real menang 6-4, setelah agregat skor 2-2 dan waktu laga sengit
-                        berujung penalti.</p>
+                <p>Real Madrid menang adu penalti kontra Atletico Madrid di leg kedua babak 16 besar Liga Champions,
+                    Rabu (13/3) dini hari WIB. El Real menang 6-4, setelah agregat skor 2-2 dan waktu laga sengit
+                    berujung penalti.</p>
 
-                    <p>Antonio Rudiger jadi algojo kelima Real Madrid. Tadinya yang ke arah kanan gawang itu mau diambil
-                        oleh Endrick, tapi pelatih Ancelotti batal turunkan striker belia itu.</p>
+                <p>Antonio Rudiger jadi algojo kelima Real Madrid. Tadinya yang ke arah kanan gawang itu mau diambil
+                    oleh Endrick, tapi pelatih Ancelotti batal turunkan striker belia itu.</p>
 
-                    <p>"Endrick udah kami pilih jadi penendang kelima, tapi saya lihat raut wajahnya tegang. Lalu saya
-                        ubah rencana, minta Rudiger ambil alih tendangan," jelas Ancelotti.</p>
+                <p>"Endrick udah kami pilih jadi penendang kelima, tapi saya lihat raut wajahnya tegang. Lalu saya
+                    ubah rencana, minta Rudiger ambil alih tendangan," jelas Ancelotti.</p>
 
-                    <p>Endrick memang masih muda dan belum berpengalaman di laga sekrusial itu. Penundaan debut algojo
-                        adu penalti El Real memang masuk akal.</p>
+                <p>Endrick memang masih muda dan belum berpengalaman di laga sekrusial itu. Penundaan debut algojo
+                    adu penalti El Real memang masuk akal.</p>
 
-                    <p>"Saya percayakan pada yang lebih berani," tambah Ancelotti.</p>
-                </article>
-            </div>
+                <p>"Saya percayakan pada yang lebih berani," tambah Ancelotti.</p>
+            </article>
 
-            <!-- Sidebar Berita Lainnya (versi seperti contohmu) -->
+            <!-- Sidebar -->
             <aside class="space-y-6">
                 <h2 class="text-xl font-bold text-white border-b border-zinc-700 pb-2">Baca Berita Lainnya</h2>
 
@@ -155,7 +155,6 @@
             <div class="space-y-8">
                 <!-- Komentar 1 -->
                 <div class="bg-zinc-900 p-5 rounded-md">
-                    <!-- Header: Avatar + Info -->
                     <div class="flex items-center space-x-4 mb-2">
                         <img src="{{ asset('img/John_Doe_2011.webp') }}" alt="User Profile"
                             class="w-12 h-12 rounded-full object-cover">
@@ -164,7 +163,6 @@
                             <span class="text-xs text-zinc-400">20/02/2025</span>
                         </div>
                     </div>
-                    <!-- Isi komentar -->
                     <p class="text-sm text-zinc-300 leading-relaxed text-justify">
                         Lorem ipsum odor amet, consectetur adipiscing elit. Elit sagittis porta eleifend enim hac
                         quisque elit conubia. Facilisis semper dolor per aptent fames; cubilia arcu. Justo imperdiet
@@ -196,6 +194,7 @@
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-[#1E1E1E] text-center py-6 text-sm text-zinc-400">
         <div class="container mx-auto">
             <p>&copy; 2025 - Company, Inc. All rights reserved.</p>

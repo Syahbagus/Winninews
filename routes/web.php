@@ -1,19 +1,22 @@
 <?php
 
-use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LandingController;
+use App\Http\Controllers\NewsController;
 
+// Route untuk Landing Controller
 Route::get('/', [LandingController::class, 'index'])->name('landing');
+
+// Route untuk Filter Kategori
+Route::get('/kategori/{kategori}', [LandingController::class, 'filterKategori']);
+
+// Route untuk News Controller
+Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
 
 // Route::get('/', function () {
 //     return view('home');
 // })->name('home');
 
-// Ini hanya sementara
-// Route::get('/', function () {
-//     return view('app');
-// })->name('app');
-
-Route::get('/news/{slug}', function () {
-    return view('newsPage');
-});
+// Route::get('/news/{slug}', function () {
+//     return view('newsPage');
+// });
