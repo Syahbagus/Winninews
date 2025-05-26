@@ -27,7 +27,7 @@ class LandingController extends Controller
 
     public function index()
     {
-        Carbon::setLocale('id'); // Set locale ke Bahasa Indonesia
+        Carbon::setLocale('id');
         return view('pages.landing', $this->getCommonData());
     }
 

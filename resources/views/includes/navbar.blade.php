@@ -2,19 +2,22 @@
 <nav id="navbar" class="sticky top-0 left-0 right-0 bg-[#1E1E1E] z-50 transition-transform duration-300">
     <div class="container mx-auto flex justify-between items-center p-4">
         <!-- Logo -->
-        <div class="text-pink-400 text-xl font-bold">
-            WinniNews
-        </div>
+        <a href="{{ route('landing') }}" class="text-pink-400 text-xl font-bold">WinniNews</a>
 
         <!-- Search Bar -->
         <div class="w-1/3 mx-4">
-            <div class="relative">
-                <input type="text" placeholder="Cari berita..."
-                    class="w-full px-4 py-2 rounded-md bg-white text-gray-400 focus:outline-none focus:ring focus:ring-pink-400">
-                <span class="absolute right-3 top-2.5 text-gray-500 hidden sm:block">
-                    <img src="{{ asset('icons/search.svg') }}" alt="Search" class="w-6 h-6">
-                </span>
-            </div>
+            <form action="{{ route('search') }}" method="GET">
+                <div class="relative">
+                    <input type="text" name="q" placeholder="Cari berita..."
+                        class="w-full px-4 py-2 rounded-md bg-white text-gray-400 focus:outline-none focus:ring focus:ring-pink-400"
+                        required>
+                    <span class="absolute right-3 top-2.5 text-gray-500 hidden sm:block">
+                        <button type="submit">
+                            <img src="{{ asset('icons/search.svg') }}" alt="Search" class="w-6 h-6">
+                        </button>
+                    </span>
+                </div>
+            </form>
         </div>
 
         <!-- Menu Desktop -->
