@@ -37,8 +37,14 @@ class Admin extends Authenticatable
         return $this->hasMany(Berita::class);
     }
 
-    public function getAuthIdentifierName()
+    //Check Super Admin
+    public function isSuperAdmin(): bool
     {
-        return 'username';
+        return $this->email === 'superadmin@winni.com';
     }
+
+    // public function getAuthIdentifierName()
+    // {
+    //     return 'username';
+    // }
 }

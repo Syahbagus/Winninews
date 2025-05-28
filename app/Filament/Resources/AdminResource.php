@@ -90,4 +90,12 @@ class AdminResource extends Resource
             'edit' => Pages\EditAdmin::route('/{record}/edit'),
         ];
     }
+
+    // Agar tidak munculkan Admin selain di superadmin
+    public static function shouldRegisterNavigation(): bool
+    {
+        $admin = auth('admin')->user();
+
+        return $admin && $admin->email === 'superadmin@winni.com';
+    }
 }

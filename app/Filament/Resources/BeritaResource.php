@@ -18,6 +18,8 @@ use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Forms\FormsComponent;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 
 class BeritaResource extends Resource
 {
@@ -113,5 +115,16 @@ class BeritaResource extends Resource
             'create' => Pages\CreateBerita::route('/create'),
             'edit' => Pages\EditBerita::route('/{record}/edit'),
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        $admin = auth('admin')->user();
+
+        if ($admin && $admin->email !== 'superadmin@winni.com') {
+            return parent::getEloquentQuery()->where('admin_id', $admin->id);
+        }
+
+        return parent::getEloquentQuery();
     }
 }

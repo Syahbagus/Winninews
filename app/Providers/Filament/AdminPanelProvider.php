@@ -2,6 +2,9 @@
 
 namespace App\Providers\Filament;
 
+use App\Models\Admin;
+use Filament\Facades\Filament;
+use Illuminate\Support\Facades\Hash;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -26,6 +29,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->authGuard('admin')
             ->login()
             ->colors([
                 'primary' => Color::Amber,
@@ -54,5 +58,19 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ]);
+    }
+
+    // Login Admin panel
+    public function auth(): void
+    {
+        Filament::authUsing(function ($request) {
+            $admin = Admin::where('username', $request->username)->first();
+
+            if ($admin && Hash::check($request->password, $admin->password)) {
+                return $admin;
+            }
+
+            return null;
+        });
     }
 }
