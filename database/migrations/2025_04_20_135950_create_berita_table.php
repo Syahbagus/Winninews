@@ -10,11 +10,12 @@ return new class extends Migration
     {
         Schema::create('beritas', function (Blueprint $table) {
             $table->id();
-            $table->string('judulBerita', 255);
-            $table->text('isiBerita');
-            $table->string('gambarBerita')->nullable();
+            $table->string('judul_berita', 255);
+            $table->string('slug')->unique();
+            $table->text('isi_berita');
+            $table->string('gambar_berita')->nullable();
             $table->string('kategori')->nullable();
-            $table->date('tanggalBerita');
+            $table->date('tanggal_berita');
 
             $table->unsignedBigInteger('admin_id');
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');

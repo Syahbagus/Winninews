@@ -15,13 +15,14 @@
 
 <body class="bg-[#121212]">
     <header class="bg-[#1E1E1E] shadow-md">
+        <!-- Navbar -->
         <nav class="container mx-auto flex justify-between items-center p-4">
             <!-- Logo -->
             <div class="text-pink-400 text-xl font-bold">
                 WinniNews
             </div>
 
-            <!-- Search Bar (Dipendekkan) -->
+            <!-- Search Bar -->
             <div class="w-1/3 mx-4">
                 <div class="relative">
                     <input type="text" placeholder="Cari berita..."
@@ -61,7 +62,7 @@
     {{-- Berita Utama dan Samping --}}
     <section id="main" class="container mx-auto px-4 py-4 md:py-12 grid md:grid-cols-3 gap-6">
         <!-- Berita Utama -->
-        <div class="md:col-span-2 md:row-span-2 group">
+        <div class="col-span-3 md:col-span-2 md:row-span-2 group">
             <a href="{{ url('/news/endrick') }}" class="block group">
                 <div class="overflow-hidden rounded-lg">
                     <img src="{{ asset('img/sample_endrick.jpeg') }}" alt="Berita Utama"
@@ -75,7 +76,7 @@
         </div>
 
         <!-- Berita Samping -->
-        <aside class="space-y-4">
+        <aside class="hidden md:block space-y-4">
             <!-- Berita 1 -->
             <a href="{{ url('/news/korupsi') }}" class="block group">
                 <div class="flex gap-4 items-start">
@@ -171,18 +172,14 @@
         <h1 class="text-2xl font-bold text-white mb-4">Kategori</h1>
         <div class="mb-8">
             <label for="kategori" class="sr-only">Pilih Kategori</label>
-            <select id="kategori" name="kategori" class="w-full md:w-64 p-2 rounded-md bg-white text-black">
+            <select id="kategori-select" name="kategori" class="w-full md:w-64 p-2 rounded-md bg-white text-black">
                 <option value="">Semua</option>
-                <option value="nasional">Nasional (Berita dalam negeri)</option>
-                <option value="internasional">Internasional (Berita global)</option>
-                <option value="politik">Politik (Kebijakan, pemerintahan, pemilu)</option>
-                <option value="ekonomi">Ekonomi & Bisnis (Keuangan, investasi, startup)</option>
-                <option value="teknologi">Teknologi (Gadget, AI, inovasi)</option>
-                <option value="olahraga">Olahraga (Sepak bola, F1, eSports, dll.)</option>
-                <option value="hiburan">Hiburan (Film, musik, selebriti)</option>
-                <option value="gaya-hidup">Gaya Hidup (Kesehatan, travel, fashion)</option>
-                <option value="opini">Opini & Editorial (Analisis mendalam, kolom opini)</option>
-                <option value="breaking-news">Breaking News (Berita terbaru yang sedang trending)</option>
+                <option value="politik">Politik</option>
+                <option value="ekonomi">Ekonomi & Bisnis</option>
+                <option value="teknologi">Teknologi</option>
+                <option value="olahraga">Olahraga</option>
+                <option value="hiburan">Hiburan</option>
+                <option value="gaya-hidup">Gaya Hidup</option>
             </select>
         </div>
 
