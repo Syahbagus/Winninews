@@ -1,3 +1,4 @@
 import './bootstrap';
-import { toggleMenu } from "./home";
-document.addEventListener("DOMContentLoaded", toggleMenu);
+import { initHomeScripts } from './home';
+
+document.addEventListener("DOMContentLoaded", initHomeScripts);

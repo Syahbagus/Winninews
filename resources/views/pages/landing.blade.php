@@ -43,7 +43,7 @@
         <h1 class="text-pink-400 text-2xl font-bold mb-6">Trending</h1>
         <div class="carousel-scroll flex overflow-x-auto space-x-6 scrollbar-hide cursor-grab pb-4">
             @foreach ($trendings as $trending)
-                <a href="{{ url('/news/banjir') }}" class="flex-shrink-0 w-72 md:w-80 lg:w-96 group mt-3">
+                <a href="{{ route('news.show', $trending->slug) }}" class="flex-shrink-0 w-72 md:w-80 lg:w-96 group mt-3">
                     <div
                         class="bg-zinc-900 rounded-lg overflow-hidden shadow-md transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 flex flex-col h-full">
                         <div class="overflow-hidden">
@@ -63,6 +63,7 @@
                     </div>
                 </a>
             @endforeach
+
         </div>
     </section>
     {{-- End of Trending --}}
@@ -112,7 +113,13 @@
         <!-- Pagination -->
         @if ($berita_paginated->hasPages())
             <div class="mt-6 mb-6 flex justify-center">
-                {{ $berita_paginated->links('pagination::tailwind') }}
+                @php
+                    $paginationHtml = $berita_paginated->links('pagination::tailwind')->render();
+
+                    // Tambahkan #kategori di setiap href link pagination
+                    $paginationHtmlWithHash = preg_replace('/href="([^"]+)"/', 'href="$1#kategori"', $paginationHtml);
+                @endphp
+                {!! $paginationHtmlWithHash !!}
             </div>
         @endif
     </section>
