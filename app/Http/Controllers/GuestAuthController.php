@@ -10,13 +10,18 @@ use App\Models\Guest;
 
 class GuestAuthController extends Controller
 {
-    // Fungsi menampilkan login form
+    // Tampilkan form login
     public function showLoginForm()
     {
+        // Simpan URL sebelumnya (kecuali jika halaman login itu sendiri)
+        if (!str_contains(url()->previous(), 'guest/login')) {
+            session(['url.intended.guest' => url()->previous()]);
+        }
+
         return view('auth.guest-login');
     }
 
-    // Fungsi login untuk guest
+    // Proses login guest
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -28,7 +33,9 @@ class GuestAuthController extends Controller
 
         if (Auth::guard('guest')->attempt([$loginType => $request->login, 'password' => $request->password], $request->remember)) {
             $request->session()->regenerate();
-            return redirect()->route('landing');
+
+            // Redirect ke halaman sebelumnya atau landing
+            return redirect(session('url.intended.guest', route('landing')));
         }
 
         return back()->withErrors([
@@ -36,7 +43,7 @@ class GuestAuthController extends Controller
         ]);
     }
 
-    // Fungsi logout untuk guest
+    // Logout guest
     public function logout(Request $request)
     {
         Auth::guard('guest')->logout();
@@ -46,13 +53,18 @@ class GuestAuthController extends Controller
         return redirect('/guest/login');
     }
 
-    // Fungsi menampilkan form registrasi guest
+    // Tampilkan form registrasi
     public function showRegisterForm()
     {
+        // Simpan URL sebelumnya
+        if (!str_contains(url()->previous(), 'guest/register')) {
+            session(['url.intended.guest' => url()->previous()]);
+        }
+
         return view('auth.guest-register');
     }
 
-    // Fungsi registrasi guest
+    // Proses registrasi guest
     public function register(Request $request)
     {
         $request->validate([
@@ -78,7 +90,8 @@ class GuestAuthController extends Controller
 
         Auth::guard('guest')->login($guest);
 
-        return redirect()->route('landing')->with('success', 'Registrasi berhasil. Selamat datang!');
+        return redirect(session('url.intended.guest', route('landing')))
+            ->with('success', 'Registrasi berhasil. Selamat datang!');
     }
 
     // Tampilkan halaman profil guest

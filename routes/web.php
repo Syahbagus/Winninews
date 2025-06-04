@@ -5,6 +5,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\GuestAuthController;
+use App\Http\Controllers\KomentarController;
 
 // Route untuk Landing Controller
 Route::get('/', [LandingController::class, 'index'])->name('landing');
@@ -43,6 +44,11 @@ Route::middleware('auth:guest')->group(function () {
     Route::get('/guest/profile', [GuestAuthController::class, 'showProfile'])->name('guest.profile');
     Route::post('/guest/profile', [GuestAuthController::class, 'updateProfile'])->name('guest.profile.update');
     Route::delete('/guest/profile/photo/delete', [GuestAuthController::class, 'deletePhoto'])->name('guest.profile.photo.delete');
+});
+
+//Route Komentar
+Route::middleware('auth:guest')->group(function () {
+    Route::post('/berita/{berita}/komentar', [KomentarController::class, 'store'])->name('komentar.store');
 });
 
 
