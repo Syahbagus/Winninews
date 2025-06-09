@@ -33,4 +33,13 @@ class Guest extends Authenticatable
     {
         return $this->hasMany(Komentar::class);
     }
+
+    public function getProfilePictureUrlAttribute()
+    {
+        if ($this->foto_guest) {
+            return asset('storage/' . $this->foto_guest);
+        }
+
+        return asset('img/default-guest.png');
+    }
 }

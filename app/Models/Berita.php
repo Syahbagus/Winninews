@@ -26,6 +26,11 @@ class Berita extends Model
         return $this->belongsTo(Admin::class);
     }
 
+    public function komentars()
+    {
+        return $this->hasMany(Komentar::class)->latest();
+    }
+
     protected static function booted()
     {
         static::creating(function ($berita) {
