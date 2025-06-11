@@ -1,7 +1,5 @@
 # Winninews - Portal Berita dengan Laravel & Filament
 
-![Winninews](https://via.placeholder.com/800x400.png?text=Winninews)
-
 Winninews adalah sebuah aplikasi portal berita modern yang dibangun menggunakan framework Laravel 11. Aplikasi ini dilengkapi dengan panel admin yang canggih dan responsif berkat Filament, memungkinkan manajemen konten yang mudah dan efisien.
 
 ## 🌟 Tentang Proyek
