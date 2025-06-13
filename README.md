@@ -81,11 +81,11 @@ Pastikan server lokal Anda (seperti XAMPP, Laragon, atau Valet) memenuhi persyar
     php artisan migrate --seed
     ```
 
-5.  **Buat Akun Admin**
-    Jalankan perintah di bawah dan ikuti instruksi di terminal.
+5.  **Buat Akun Superadmin**
+    Jalankan perintah di bawah ini untuk membuat akun superadmin secara otomatis. Perintah ini hanya perlu dijalankan sekali.
 
     ```bash
-    php artisan make:filament-user
+    php artisan app:create-superadmin
     ```
 
 6.  **Buat Symbolic Link untuk Storage**
@@ -96,6 +96,7 @@ Pastikan server lokal Anda (seperti XAMPP, Laragon, atau Valet) memenuhi persyar
 
 7.  **Jalankan Aplikasi**
     Buka **dua terminal terpisah**:
+
     -   Terminal 1 (Vite):
         ```bash
         npm run dev
@@ -105,10 +106,15 @@ Pastikan server lokal Anda (seperti XAMPP, Laragon, atau Valet) memenuhi persyar
         php artisan serve
         ```
 
-### Akses Aplikasi
+8.  **Akses Aplikasi**
 
 -   **Halaman Publik**: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 -   **Panel Admin**: [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin)
+
+9. **Gunakan kredensial berikut untuk login sebagai superadmin**
+
+-   **Email:** `superadmin@winni.com`
+-   **Password:** `password`
 
 ---
 
@@ -134,7 +140,7 @@ Berikut adalah penjelasan untuk folder dan file utama dalam proyek ini.
         -   `Berita.php`: Model untuk tabel `berita`, terhubung dengan `Komentar` dan `User`.
         -   `Guest.php`: Model untuk tabel `guests`, merepresentasikan pengguna non-admin.
         -   `Komentar.php`: Model untuk tabel `komentar`, terhubung dengan `Berita` dan `Guest`.
-        -   `User.php`: Model default Laravel, digunakan oleh Filament untuk otentikasi admin.
+        -   `User.php`: Model default Laravel, **tidak digunakan** untuk otentikasi panel admin di proyek ini.
     -   `Providers/` - Berisi Service Provider.
         -   `Filament/AdminPanelProvider.php`: File konfigurasi utama untuk panel admin, seperti registrasi halaman, widget, dan navigasi.
 
@@ -176,6 +182,6 @@ Berikut adalah penjelasan untuk folder dan file utama dalam proyek ini.
     -   `framework/`: Berisi file cache yang dibuat oleh Laravel.
     -   `logs/`: Berisi file log error aplikasi (`laravel.log`).
 
--   `.env` - (Dibuat manual, tidak ada di GitHub) File environment yang berisi kredensial dan konfigurasi spesifik untuk lingkungan Anda.
+-   `.env` - File environment yang berisi kredensial dan konfigurasi spesifik untuk lingkungan Anda.
 -   `composer.json` - Mendefinisikan dependensi PHP untuk proyek ini.
 -   `package.json` - Mendefinisikan dependensi JavaScript/Node.js untuk proyek ini.
