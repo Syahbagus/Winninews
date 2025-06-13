@@ -10,9 +10,7 @@ Proyek ini bertujuan untuk menyediakan platform portal berita yang cepat, aman, 
 
 -   [**Laravel 11**](https://laravel.com/) - Framework PHP yang elegan dan ekspresif.
 -   [**Filament 3**](https://filamentphp.com/) - Admin panel yang powerful untuk Laravel TALL Stack.
--   **Livewire** - Framework full-stack untuk membangun antarmuka dinamis.
 -   **Tailwind CSS** - CSS framework yang mengutamakan utilitas.
--   **Alpine.JS** - Framework JavaScript minimalis.
 -   **MySQL** - Sistem manajemen basis data relasional.
 
 ## ✨ Fitur Utama
