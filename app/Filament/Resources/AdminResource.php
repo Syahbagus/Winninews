@@ -40,6 +40,7 @@ class AdminResource extends Resource
                 ->maxLength(255),
 
             Forms\Components\TextInput::make('telp_admin')
+                ->required()
                 ->label('Telepon')
                 ->maxLength(20),
 
