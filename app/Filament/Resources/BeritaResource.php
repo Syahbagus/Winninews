@@ -92,7 +92,6 @@ class BeritaResource extends Resource
     {
         return $table->columns([
             TextColumn::make('judul_berita')->label('Judul')->sortable()->searchable(),
-            // TextColumn::make('slug')->label('Slug')->toggleable(),
             TextColumn::make('kategori')->label('Kategori'),
             ImageColumn::make('gambar_berita')->label('Gambar')->circular()->size(40),
             TextColumn::make('tanggal_berita')->label('Tanggal')->date(),

@@ -50,13 +50,3 @@ Route::middleware('auth:guest')->group(function () {
 Route::middleware('auth:guest')->group(function () {
     Route::post('/berita/{berita}/komentar', [KomentarController::class, 'store'])->name('komentar.store');
 });
-
-
-// <!-- Route lama -->
-// Route::get('/', function () {
-//     return view('home');
-// })->name('home');
-
-// Route::get('/news/{slug}', function () {
-//     return view('newsPage');
-// });

@@ -22,8 +22,10 @@ class GuestAuthController extends Controller
     }
 
     // Proses login guest
+    // app/Http/Controllers/GuestAuthController.php -> method login
     public function login(Request $request)
     {
+        // ---> Blok A  
         $credentials = $request->validate([
             'login' => ['required', 'string'],
             'password' => ['required', 'string'],
@@ -31,13 +33,16 @@ class GuestAuthController extends Controller
 
         $loginType = filter_var($request->login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
+        // ---> Blok B (Titik Keputusan)
         if (Auth::guard('guest')->attempt([$loginType => $request->login, 'password' => $request->password], $request->remember)) {
+            // Blok C (Jalur Sukses)
             $request->session()->regenerate();
 
             // Redirect ke halaman sebelumnya atau landing
             return redirect(session('url.intended.guest', route('landing')));
         }
 
+        // Blok D (Jalur Gagal)
         return back()->withErrors([
             'login' => 'Email atau username atau password salah.',
         ]);
