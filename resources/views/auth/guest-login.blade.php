@@ -24,6 +24,19 @@
                     <label for="password" class="block text-sm font-medium">Password</label>
                     <input type="password" id="password" name="password" required
                         class="w-full mt-1 px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500">
+                    @if ($errors->any())
+                        <div class="mb-4">
+                            <div class="font-medium text-red-600">
+                                {{ __('Whoops! Something went wrong.') }}
+                            </div>
+
+                            <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
                 <button type="submit"
                     class="w-full bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 rounded-md">

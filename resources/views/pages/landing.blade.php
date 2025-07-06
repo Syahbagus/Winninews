@@ -63,7 +63,6 @@
                     </div>
                 </a>
             @endforeach
-
         </div>
     </section>
     {{-- End of Trending --}}
